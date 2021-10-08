@@ -35,7 +35,7 @@ class DumbPredictor(metaclass=abc.ABCMeta):
         Returns:
             1-dimensional array with 'predicted' result."""
         n_features = features.shape[0]  # Amount of features.
-        return np.full((n_features,), self._single_predict())
+        return np.full((n_features,), self._single_predict())  # Call _single_predict method of concrete class for value
 
 
 class DumbRegressor(DumbPredictor):
@@ -73,5 +73,6 @@ class DumbNominalClassifier(DumbPredictor):
 
         Returns:
             self.targets mode."""
-        modes, _ = stats.mode(self.targets)
-        return modes[0]
+        modes, _ = stats.mode(self.targets)  # 'modes' is a list of modes in case of equal frequencies.
+        return modes[0]                      # First one is returned because which one is picked does not matter
+                                             # For the purpose of having a baseline model to compare against.
