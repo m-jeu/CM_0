@@ -34,7 +34,7 @@ class DumbPredictor(metaclass=abc.ABCMeta):
 
         Returns:
             1-dimensional array with 'predicted' result."""
-        n_features = features.shape[0]  # Amount of features.
+        n_features = features.shape[0]  # Amount of feature-sets to predict label or value for.
         return np.full((n_features,), self._single_predict())  # Call _single_predict method of concrete class for value
 
 
